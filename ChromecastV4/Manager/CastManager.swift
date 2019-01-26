@@ -41,7 +41,14 @@ class CastManager: NSObject {
     private let kDebugLoggingEnabled = true
     
     var sessionManager: GCKSessionManager!
-    
+    var hasConnectionEstablished: Bool {
+        let castSession = sessionManager.currentCastSession
+        if castSession != nil {
+            return true
+        } else {
+            return false
+        }
+    }
     private var sessionStatusListener: ((CastSessionStatus) -> Void)?
     var sessionStatus: CastSessionStatus! {
         didSet {

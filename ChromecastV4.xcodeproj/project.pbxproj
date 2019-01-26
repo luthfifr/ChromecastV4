@@ -10,6 +10,12 @@
 		CE3FD68AFB4FC2FC7D392342 /* Pods_ChromecastV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64DCF926F314DA5FD0C9243C /* Pods_ChromecastV4.framework */; };
 		CF8E53B121FCCF4E006B7277 /* ExternalAccessory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF8E53B021FCCF4E006B7277 /* ExternalAccessory.framework */; };
 		CF8E53B521FCD1E6006B7277 /* CastManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8E53B421FCD1E6006B7277 /* CastManager.swift */; };
+		CF8E53BB21FCD628006B7277 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8E53B921FCD628006B7277 /* MainViewController.swift */; };
+		CF8E53BC21FCD628006B7277 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF8E53BA21FCD628006B7277 /* MainViewController.xib */; };
+		CF8E53BF21FCD69A006B7277 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8E53BD21FCD69A006B7277 /* MainTableViewCell.swift */; };
+		CF8E53C021FCD69A006B7277 /* MainTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF8E53BE21FCD69A006B7277 /* MainTableViewCell.xib */; };
+		CF8E53C321FCD757006B7277 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8E53C121FCD757006B7277 /* PlayerViewController.swift */; };
+		CF8E53C421FCD757006B7277 /* PlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF8E53C221FCD757006B7277 /* PlayerViewController.xib */; };
 		CFF8027B21FCBDB500C8B97F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF8027A21FCBDB500C8B97F /* AppDelegate.swift */; };
 		CFF8028221FCBDB900C8B97F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFF8028121FCBDB900C8B97F /* Assets.xcassets */; };
 		CFF8028521FCBDB900C8B97F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFF8028321FCBDB900C8B97F /* LaunchScreen.storyboard */; };
@@ -22,6 +28,12 @@
 		CF8E53B021FCCF4E006B7277 /* ExternalAccessory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExternalAccessory.framework; path = System/Library/Frameworks/ExternalAccessory.framework; sourceTree = SDKROOT; };
 		CF8E53B221FCCF4E006B7277 /* ChromecastV4.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ChromecastV4.entitlements; sourceTree = "<group>"; };
 		CF8E53B421FCD1E6006B7277 /* CastManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastManager.swift; sourceTree = "<group>"; };
+		CF8E53B921FCD628006B7277 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		CF8E53BA21FCD628006B7277 /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		CF8E53BD21FCD69A006B7277 /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
+		CF8E53BE21FCD69A006B7277 /* MainTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainTableViewCell.xib; sourceTree = "<group>"; };
+		CF8E53C121FCD757006B7277 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
+		CF8E53C221FCD757006B7277 /* PlayerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayerViewController.xib; sourceTree = "<group>"; };
 		CFF8027721FCBDB500C8B97F /* ChromecastV4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChromecastV4.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFF8027A21FCBDB500C8B97F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CFF8028121FCBDB900C8B97F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -68,6 +80,35 @@
 			path = Manager;
 			sourceTree = "<group>";
 		};
+		CF8E53B621FCD5AE006B7277 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CF8E53B721FCD5E8006B7277 /* Main Screen */,
+				CF8E53B821FCD5F0006B7277 /* Player Screen */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		CF8E53B721FCD5E8006B7277 /* Main Screen */ = {
+			isa = PBXGroup;
+			children = (
+				CF8E53B921FCD628006B7277 /* MainViewController.swift */,
+				CF8E53BA21FCD628006B7277 /* MainViewController.xib */,
+				CF8E53BD21FCD69A006B7277 /* MainTableViewCell.swift */,
+				CF8E53BE21FCD69A006B7277 /* MainTableViewCell.xib */,
+			);
+			path = "Main Screen";
+			sourceTree = "<group>";
+		};
+		CF8E53B821FCD5F0006B7277 /* Player Screen */ = {
+			isa = PBXGroup;
+			children = (
+				CF8E53C121FCD757006B7277 /* PlayerViewController.swift */,
+				CF8E53C221FCD757006B7277 /* PlayerViewController.xib */,
+			);
+			path = "Player Screen";
+			sourceTree = "<group>";
+		};
 		CFF8026E21FCBDB500C8B97F = {
 			isa = PBXGroup;
 			children = (
@@ -89,6 +130,7 @@
 		CFF8027921FCBDB500C8B97F /* ChromecastV4 */ = {
 			isa = PBXGroup;
 			children = (
+				CF8E53B621FCD5AE006B7277 /* Controllers */,
 				CF8E53B321FCD1AB006B7277 /* Manager */,
 				CF8E53B221FCCF4E006B7277 /* ChromecastV4.entitlements */,
 				CFF8027A21FCBDB500C8B97F /* AppDelegate.swift */,
@@ -166,6 +208,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CFF8028521FCBDB900C8B97F /* LaunchScreen.storyboard in Resources */,
+				CF8E53C421FCD757006B7277 /* PlayerViewController.xib in Resources */,
+				CF8E53BC21FCD628006B7277 /* MainViewController.xib in Resources */,
+				CF8E53C021FCD69A006B7277 /* MainTableViewCell.xib in Resources */,
 				CFF8028221FCBDB900C8B97F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -238,8 +283,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF8E53BB21FCD628006B7277 /* MainViewController.swift in Sources */,
 				CF8E53B521FCD1E6006B7277 /* CastManager.swift in Sources */,
+				CF8E53BF21FCD69A006B7277 /* MainTableViewCell.swift in Sources */,
 				CFF8027B21FCBDB500C8B97F /* AppDelegate.swift in Sources */,
+				CF8E53C321FCD757006B7277 /* PlayerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
