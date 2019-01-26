@@ -164,7 +164,7 @@ class CastManager: NSObject {
     
     // MARK: - Build Meta
     
-    func buildMediaInformation(contentID: String, title: String, description: String, studio: String, duration: TimeInterval, movieUrl: String, streamType: GCKMediaStreamType, thumbnailUrl: String?, customData: Any?) -> GCKMediaInformation {
+    func buildMediaInformation(contentID: String, title: String, description: String, studio: String, duration: TimeInterval, streamType: GCKMediaStreamType, thumbnailUrl: String?, customData: Any?) -> GCKMediaInformation {
         let metadata = buildMetadata(title: title, description: description, studio: studio, thumbnailUrl: thumbnailUrl)
         
         let mediaInfoBuilder = GCKMediaInformationBuilder()

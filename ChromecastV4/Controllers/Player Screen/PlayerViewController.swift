@@ -204,7 +204,7 @@ extension PlayerViewController {
         let duration = currentItem.asset.duration.seconds
         playbackState = .playCast
         player.pause()
-        let castMediaInfo = castManager.buildMediaInformation(contentID: "", title: "Big Buck Bunny (2008)", description: "", studio: "", duration: duration, movieUrl: videoURL, streamType: GCKMediaStreamType.buffered, thumbnailUrl: imageURL, customData: nil)
+        let castMediaInfo = castManager.buildMediaInformation(contentID: videoURL, title: "Big Buck Bunny (2008)", description: "", studio: "", duration: duration, streamType: GCKMediaStreamType.buffered, thumbnailUrl: imageURL, customData: nil)
         castManager.startSelectedItemRemotely(castMediaInfo, at: currentTime, completion: { done in
             if !done {
                 self.playbackState = .pause
