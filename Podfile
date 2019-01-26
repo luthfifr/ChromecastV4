@@ -7,4 +7,5 @@ target 'ChromecastV4' do
 
   # Pods for ChromecastV4
   pod 'google-cast-sdk', '~> 4.3.3'
+  pod 'SDWebImage', '~> 4.0'
 end

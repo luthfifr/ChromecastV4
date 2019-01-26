@@ -5,19 +5,25 @@ PODS:
   - google-cast-sdk/Core (4.3.4):
     - Protobuf (~> 3.0)
   - Protobuf (3.6.1)
+  - SDWebImage (4.4.4):
+    - SDWebImage/Core (= 4.4.4)
+  - SDWebImage/Core (4.4.4)
 
 DEPENDENCIES:
   - google-cast-sdk (~> 4.3.3)
+  - SDWebImage (~> 4.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - google-cast-sdk
     - Protobuf
+    - SDWebImage
 
 SPEC CHECKSUMS:
   google-cast-sdk: 84c88641be5a09fb0424bb44975a53b1dbd2ee6a
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
+  SDWebImage: c00ec18ab25d10e5ffac109b0f78d1b4341c9691
 
-PODFILE CHECKSUM: 87451b3b2fc96a920f5a3f95e06ea15c52b1f7df
+PODFILE CHECKSUM: bd85f3622365fbd4aac6e315a16b1d124c502b63
 
 COCOAPODS: 1.5.3
