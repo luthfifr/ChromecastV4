@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		CE3FD68AFB4FC2FC7D392342 /* Pods_ChromecastV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64DCF926F314DA5FD0C9243C /* Pods_ChromecastV4.framework */; };
+		CF8E53B121FCCF4E006B7277 /* ExternalAccessory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF8E53B021FCCF4E006B7277 /* ExternalAccessory.framework */; };
+		CF8E53B521FCD1E6006B7277 /* CastManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8E53B421FCD1E6006B7277 /* CastManager.swift */; };
 		CFF8027B21FCBDB500C8B97F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF8027A21FCBDB500C8B97F /* AppDelegate.swift */; };
-		CFF8027D21FCBDB500C8B97F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF8027C21FCBDB500C8B97F /* ViewController.swift */; };
-		CFF8028021FCBDB500C8B97F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFF8027E21FCBDB500C8B97F /* Main.storyboard */; };
 		CFF8028221FCBDB900C8B97F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFF8028121FCBDB900C8B97F /* Assets.xcassets */; };
 		CFF8028521FCBDB900C8B97F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFF8028321FCBDB900C8B97F /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -19,10 +19,11 @@
 		64DCF926F314DA5FD0C9243C /* Pods_ChromecastV4.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChromecastV4.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4CAF0AC84E2DC2201BA2179 /* Pods-ChromecastV4.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChromecastV4.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ChromecastV4/Pods-ChromecastV4.debug.xcconfig"; sourceTree = "<group>"; };
 		ACC1FF14647E15FBDF8E15F4 /* Pods-ChromecastV4.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChromecastV4.release.xcconfig"; path = "Pods/Target Support Files/Pods-ChromecastV4/Pods-ChromecastV4.release.xcconfig"; sourceTree = "<group>"; };
+		CF8E53B021FCCF4E006B7277 /* ExternalAccessory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExternalAccessory.framework; path = System/Library/Frameworks/ExternalAccessory.framework; sourceTree = SDKROOT; };
+		CF8E53B221FCCF4E006B7277 /* ChromecastV4.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ChromecastV4.entitlements; sourceTree = "<group>"; };
+		CF8E53B421FCD1E6006B7277 /* CastManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastManager.swift; sourceTree = "<group>"; };
 		CFF8027721FCBDB500C8B97F /* ChromecastV4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChromecastV4.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFF8027A21FCBDB500C8B97F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CFF8027C21FCBDB500C8B97F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		CFF8027F21FCBDB500C8B97F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CFF8028121FCBDB900C8B97F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CFF8028421FCBDB900C8B97F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CFF8028621FCBDB900C8B97F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -33,6 +34,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF8E53B121FCCF4E006B7277 /* ExternalAccessory.framework in Frameworks */,
 				CE3FD68AFB4FC2FC7D392342 /* Pods_ChromecastV4.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -43,6 +45,7 @@
 		272C9156E86B889C1C747358 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CF8E53B021FCCF4E006B7277 /* ExternalAccessory.framework */,
 				64DCF926F314DA5FD0C9243C /* Pods_ChromecastV4.framework */,
 			);
 			name = Frameworks;
@@ -55,6 +58,14 @@
 				ACC1FF14647E15FBDF8E15F4 /* Pods-ChromecastV4.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		CF8E53B321FCD1AB006B7277 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				CF8E53B421FCD1E6006B7277 /* CastManager.swift */,
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 		CFF8026E21FCBDB500C8B97F = {
@@ -78,9 +89,9 @@
 		CFF8027921FCBDB500C8B97F /* ChromecastV4 */ = {
 			isa = PBXGroup;
 			children = (
+				CF8E53B321FCD1AB006B7277 /* Manager */,
+				CF8E53B221FCCF4E006B7277 /* ChromecastV4.entitlements */,
 				CFF8027A21FCBDB500C8B97F /* AppDelegate.swift */,
-				CFF8027C21FCBDB500C8B97F /* ViewController.swift */,
-				CFF8027E21FCBDB500C8B97F /* Main.storyboard */,
 				CFF8028121FCBDB900C8B97F /* Assets.xcassets */,
 				CFF8028321FCBDB900C8B97F /* LaunchScreen.storyboard */,
 				CFF8028621FCBDB900C8B97F /* Info.plist */,
@@ -123,6 +134,11 @@
 				TargetAttributes = {
 					CFF8027621FCBDB500C8B97F = {
 						CreatedOnToolsVersion = 9.4;
+						SystemCapabilities = {
+							com.apple.WAC = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -151,7 +167,6 @@
 			files = (
 				CFF8028521FCBDB900C8B97F /* LaunchScreen.storyboard in Resources */,
 				CFF8028221FCBDB900C8B97F /* Assets.xcassets in Resources */,
-				CFF8028021FCBDB500C8B97F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -223,7 +238,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CFF8027D21FCBDB500C8B97F /* ViewController.swift in Sources */,
+				CF8E53B521FCD1E6006B7277 /* CastManager.swift in Sources */,
 				CFF8027B21FCBDB500C8B97F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -231,14 +246,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		CFF8027E21FCBDB500C8B97F /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CFF8027F21FCBDB500C8B97F /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		CFF8028321FCBDB900C8B97F /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -369,10 +376,14 @@
 			baseConfigurationReference = A4CAF0AC84E2DC2201BA2179 /* Pods-ChromecastV4.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ChromecastV4/ChromecastV4.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2L6QV2N95T;
 				INFOPLIST_FILE = ChromecastV4/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.imperio.ChromecastV4;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -385,10 +396,14 @@
 			baseConfigurationReference = ACC1FF14647E15FBDF8E15F4 /* Pods-ChromecastV4.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ChromecastV4/ChromecastV4.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2L6QV2N95T;
 				INFOPLIST_FILE = ChromecastV4/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.imperio.ChromecastV4;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

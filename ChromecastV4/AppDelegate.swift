@@ -12,7 +12,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    let castManager = CastManager.shared
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -27,6 +27,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        if castManager.sessionManager != nil {
+            castManager.sessionManager.suspendSession(with: .appBackgrounded)
+        }
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -39,6 +42,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        //stop cast device discovery activity
+        if castManager.discoveryManager != nil {
+            if castManager.discoveryManager.isDiscoveryActive(forDeviceCategory: castManager.deviceCategory) {
+                castManager.discoveryManager.stopDiscovery()
+            }
+        }
+        
+        if castManager.sessionManager != nil {
+            if castManager.sessionManager.hasConnectedCastSession() {
+                castManager.sessionManager.suspendSession(with: .appTerminated)
+                castManager.sessionManager.endSessionAndStopCasting(true)
+            }
+        }
     }
 
 
