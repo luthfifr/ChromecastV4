@@ -54,6 +54,8 @@ class PlayerViewController: UIViewController {
         castButton.triggersDefaultCastDialog = true
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: castButton)
         
+        castManager.seekLocalPlayerDelegate = self
+        
         listenForCastConnection()
         
         if castManager.hasConnectionEstablished {
@@ -264,5 +266,16 @@ extension PlayerViewController {
         }
         
         //btnPlayPause(self)
+    }
+}
+
+extension PlayerViewController: CastManagerSeekLocalPlayerDelegate {
+    func seekLocalPlayer(to time: TimeInterval) {
+        if let visibleVC = navigationController?.visibleViewController, visibleVC is PlayerViewController {
+            player.seek(to: CMTimeMake(Int64(time*1000), 1000))
+            perform(#selector(playVideo), with: nil, afterDelay: 0.5)
+        } else {
+            btnStop(self)
+        }
     }
 }
