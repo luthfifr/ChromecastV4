@@ -1,5 +1,5 @@
 # ChromecastV4
-This repo is about integrating Google Chromecast SDK version 4 to iOS app
+This repo is about integrating Google Cast SDK version 4 to iOS app
 
 ## Important
 Please do `pod install` before build/run this project
