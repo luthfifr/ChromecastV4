@@ -46,6 +46,10 @@ class PlayerViewController: UIViewController {
     private let videoURL = "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
     var imageURL: String?
     
+    private var mediaControlsContainerView: UIView!
+    private var miniMediaControlsHeightConstraint: NSLayoutConstraint!
+    private var miniMediaControlsViewController: GCKUIMiniMediaControlsViewController!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -55,6 +59,9 @@ class PlayerViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: castButton)
         
         castManager.seekLocalPlayerDelegate = self
+        
+        createContainer()
+        createMiniMediaControl()
         
         listenForCastConnection()
         
@@ -75,8 +82,12 @@ class PlayerViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         
-        if player != nil {
+        if player != nil && !castManager.sessionManager.hasConnectedCastSession() {
             playVideo()
+        }
+        
+        if mediaControlsContainerView != nil {
+            updateControlBarsVisibility()
         }
     }
     
@@ -108,6 +119,7 @@ class PlayerViewController: UIViewController {
     @objc private func playVideo() {
         player.play()
         btnPlayPause.setImage(UIImage(named: "icon_pause"), for: .normal)
+        self.enableActionBtns(true)
     }
     
     @objc private func playerDidFinishPlaying(notification: NSNotification) {
@@ -174,6 +186,67 @@ class PlayerViewController: UIViewController {
     }
 }
 
+// MARK: - GCKUIMiniMediaControlsViewController
+extension PlayerViewController {
+    private func createContainer() {
+        mediaControlsContainerView = UIView(frame: CGRect(x: 0, y: view.frame.maxY, width: view.frame.width, height: 0))
+        mediaControlsContainerView.accessibilityIdentifier = "mediaControlsContainerView"
+        view.addSubview(mediaControlsContainerView)
+        mediaControlsContainerView.translatesAutoresizingMaskIntoConstraints = false
+        mediaControlsContainerView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        mediaControlsContainerView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        mediaControlsContainerView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        miniMediaControlsHeightConstraint = mediaControlsContainerView.heightAnchor.constraint(equalToConstant: 0)
+        miniMediaControlsHeightConstraint.isActive = true
+    }
+    
+    private func createMiniMediaControl() {
+        let castContext = GCKCastContext.sharedInstance()
+        miniMediaControlsViewController = castContext.createMiniMediaControlsViewController()
+        miniMediaControlsViewController.delegate = self
+        mediaControlsContainerView.alpha = 0
+        miniMediaControlsViewController.view.alpha = 0
+        miniMediaControlsHeightConstraint.constant = miniMediaControlsViewController.minHeight
+        installViewController(miniMediaControlsViewController, inContainerView: mediaControlsContainerView)
+        
+        updateControlBarsVisibility()
+    }
+    
+    private func updateControlBarsVisibility() {
+        if miniMediaControlsViewController.active {
+            miniMediaControlsHeightConstraint.constant = miniMediaControlsViewController.minHeight
+            view.bringSubview(toFront: mediaControlsContainerView)
+        } else {
+            miniMediaControlsHeightConstraint.constant = 0
+        }
+        
+        UIView.animate(withDuration: 0.3, animations: {
+            self.view.layoutIfNeeded()
+        }) { _ in
+            self.mediaControlsContainerView.alpha = 1
+            self.miniMediaControlsViewController.view.alpha = 1
+        }
+    }
+    
+    private func installViewController(_ viewController: UIViewController?, inContainerView containerView: UIView) {
+        if let viewController = viewController {
+            viewController.view.isHidden = true
+            addChildViewController(viewController)
+            viewController.view.frame = containerView.bounds
+            containerView.addSubview(viewController.view)
+            viewController.didMove(toParentViewController: self)
+            viewController.view.isHidden = false
+        }
+    }
+}
+
+// MARK: - GCKUIMiniMediaControlsViewControllerDelegate
+extension PlayerViewController: GCKUIMiniMediaControlsViewControllerDelegate {
+    func miniMediaControlsViewController(_ miniMediaControlsViewController: GCKUIMiniMediaControlsViewController, shouldAppear: Bool) {
+        updateControlBarsVisibility()
+    }
+}
+
 extension PlayerViewController {
     private func listenForCastConnection() {
         let sessionStatusListener: (CastSessionStatus) -> Void = { status in
@@ -211,6 +284,7 @@ extension PlayerViewController {
                 self.startPlayer(nil)
             } else {
                 //self.scheduleCastTimer()
+                self.enableActionBtns(false)
             }
         })
     }
@@ -266,6 +340,11 @@ extension PlayerViewController {
         }
         
         //btnPlayPause(self)
+    }
+    
+    private func enableActionBtns(_ enabled: Bool) {
+        btnStop.isEnabled = enabled
+        btnPlayPause.isEnabled = enabled
     }
 }
 

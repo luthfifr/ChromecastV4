@@ -15,7 +15,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let castManager = CastManager.shared
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        window?.clipsToBounds = true
+        
+        castManager.initialise()
+        
+        let firstVC = MainViewController.init(nibName: String(describing: MainViewController.self), bundle: nil)
+        let navVC = UINavigationController.init(rootViewController: firstVC)
+        navVC.navigationBar.layer.shadowOpacity = 0.3
+        navVC.navigationBar.layer.shadowOffset = CGSize(width: 0, height: 1)
+        navVC.navigationBar.layer.shadowRadius = 5
+        navVC.navigationBar.layer.masksToBounds = false
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.backgroundColor = .clear
+        window?.rootViewController = navVC
+        window?.makeKeyAndVisible()
+        
         return true
     }
 
