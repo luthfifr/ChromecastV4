@@ -128,13 +128,13 @@ class PlayerViewController: UIViewController {
     
     @IBAction func timeSeeker(_ sender: UISlider) {
         player.pause()
-        player.seek(to: CMTimeMake(Int64(sender.value*1000), 1000))
+        player.seek(to: CMTimeMake(value: Int64(sender.value*1000), timescale: 1000))
         perform(#selector(playVideo), with: nil, afterDelay: 0.5)
     }
     
     @IBAction func btnStop(_ sender: Any) {
         player.pause()
-        player.seek(to: CMTimeMake(0, 1))
+        player.seek(to: CMTimeMake(value: 0, timescale: 1))
         btnPlayPause.setImage(UIImage(named: "icon_play"), for: .normal)
     }
     
@@ -215,7 +215,7 @@ extension PlayerViewController {
     private func updateControlBarsVisibility() {
         if miniMediaControlsViewController.active {
             miniMediaControlsHeightConstraint.constant = miniMediaControlsViewController.minHeight
-            view.bringSubview(toFront: mediaControlsContainerView)
+            view.bringSubviewToFront(mediaControlsContainerView)
         } else {
             miniMediaControlsHeightConstraint.constant = 0
         }
@@ -231,10 +231,10 @@ extension PlayerViewController {
     private func installViewController(_ viewController: UIViewController?, inContainerView containerView: UIView) {
         if let viewController = viewController {
             viewController.view.isHidden = true
-            addChildViewController(viewController)
+            addChild(viewController)
             viewController.view.frame = containerView.bounds
             containerView.addSubview(viewController.view)
-            viewController.didMove(toParentViewController: self)
+            viewController.didMove(toParent: self)
             viewController.view.isHidden = false
         }
     }
@@ -351,7 +351,7 @@ extension PlayerViewController {
 extension PlayerViewController: CastManagerSeekLocalPlayerDelegate {
     func seekLocalPlayer(to time: TimeInterval) {
         if let visibleVC = navigationController?.visibleViewController, visibleVC is PlayerViewController {
-            player.seek(to: CMTimeMake(Int64(time*1000), 1000))
+            player.seek(to: CMTimeMake(value: Int64(time*1000), timescale: 1000))
             perform(#selector(playVideo), with: nil, afterDelay: 0.5)
         } else {
             btnStop(self)

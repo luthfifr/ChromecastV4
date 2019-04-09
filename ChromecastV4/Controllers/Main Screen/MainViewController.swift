@@ -85,7 +85,7 @@ class MainViewController: UIViewController {
     private func updateControlBarsVisibility() {
         if miniMediaControlsViewController.active {
             miniMediaControlsHeightConstraint.constant = miniMediaControlsViewController.minHeight
-            view.bringSubview(toFront: mediaControlsContainerView)
+            view.bringSubviewToFront(mediaControlsContainerView)
         } else {
             miniMediaControlsHeightConstraint.constant = 0
         }
@@ -101,10 +101,10 @@ class MainViewController: UIViewController {
     private func installViewController(_ viewController: UIViewController?, inContainerView containerView: UIView) {
         if let viewController = viewController {
             viewController.view.isHidden = true
-            addChildViewController(viewController)
+            addChild(viewController)
             viewController.view.frame = containerView.bounds
             containerView.addSubview(viewController.view)
-            viewController.didMove(toParentViewController: self)
+            viewController.didMove(toParent: self)
             viewController.view.isHidden = false
         }
     }
